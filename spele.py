@@ -6,6 +6,17 @@ mansLogs.title('TicTacToe')
 speletajsX=True #Tas kurš liks krustiņus
 count=0 #aizpildīto rūtiņu skaits
 
+def disableButtons():
+ btn1.config(state=DISABLED) #DISABLED = [poga izslēgta]
+ btn2.config(state=DISABLED)
+ btn3.config(state=DISABLED)
+ btn4.config(state=DISABLED)
+ btn5.config(state=DISABLED)
+ btn6.config(state=DISABLED)
+ btn7.config(state=DISABLED)
+ btn8.config(state=DISABLED)
+ btn9.config(state=DISABLED)
+
 def btnClick(button): #tukša poga tiek padota
     global speletajsX,count #mainīgie kuri tiks izmantoti
     if button ["text"]=="" and speletajsX==True: #Spēlē X speletājs
@@ -32,6 +43,7 @@ def checkWinner():
     btn1["text"]=="X"and btn5["text"]=="X"and btn9["text"]=="X"or
     btn3["text"]=="X"and btn8["text"]=="X"and btn7["text"]=="X"):
      winner=True
+     disableButtons()
      messagebox.showinfo("TicTacToe", "Speletajs X ir uzvarētājs")
     elif (btn1["text"]=="O" and btn2["text"]=="O"and btn3["text"]=="O"or
     btn4["text"]=="O"and btn5["text"]=="O"and btn6["text"]=="O"or
@@ -42,9 +54,11 @@ def checkWinner():
     btn1["text"]=="O"and btn5["text"]=="O"and btn9["text"]=="O"or
     btn3["text"]=="O"and btn8["text"]=="O"and btn7["text"]=="O"):
      winner=True
+     disableButtons()
      messagebox.showinfo("TicTacToe", "Speletajs O ir uzvarētājs")
     elif count==9:
      messagebox.showinfo("TicTacToe", "Neviens nav uzvarējis")
+     disableButtons()
 
 btn1=Button(mansLogs,text="",width=7,height=3,font=('Helvica',23),bg="black", fg="white", command=lambda: btnClick(btn1))
 btn2=Button(mansLogs,text="",width=7,height=3,font=('Helvica',23),bg="black", fg="white", command=lambda: btnClick(btn2))
